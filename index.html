@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brew Haven - Home</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css">
   <style>
+    
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
+    
       color: white;
     }
 
@@ -20,6 +21,10 @@
       gap: 15px;
       padding: 0;
       margin: 0;
+    }
+
+    .nav-links li {
+      display: inline;
     }
 
     .nav-links a {
@@ -51,7 +56,9 @@
     .menu-cards .card .order-button {
       margin-top: 10px;
       display: inline-block;
+      
     }
+    
   </style>
 </head>
 <body>
@@ -63,11 +70,12 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About Us</a></li>
+        
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="reservation.html">Order</a></li>
-        <li><a href="event.html">Events</a></li>
+        <li><a href="events.html">Events</a></li>
         <li><a href="reviews.html">Reviews</a></li>
         <li><a href="careers.html">Careers</a></li>
       </ul>
@@ -90,7 +98,7 @@
       <a href="about.html" class="read-more">Read More About Us</a>
     </div>
     <div class="about-img">
-      <img src="interior.webp" alt="Cafe Interior" loading="lazy">
+      <img src= images/interior.webp alt="Cafe Interior" loading="lazy" >
     </div>
   </section>
 
@@ -98,25 +106,25 @@
     <h2>Popular Picks</h2>
     <div class="menu-cards">
       <div class="card">
-        <img src="latte.webp" alt="Latte" loading="lazy">
+        <img src= images/latte.webp alt="Latte" loading="lazy">
         <h3>Caramel Latte</h3>
         <p>$4.50</p>
-        <a href="reservation.html" class="order-button">Order Now</a>
+        <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
       </div>
       <div class="card">
-        <img src="mocha.webp" alt="Matcha" loading="lazy">
+        <img src=images/mocha.webp alt="Matcha" loading="lazy">
         <h3>Matcha Tea</h3>
         <p>$4.00</p>
-        <a href="reservation.html" class="order-button">Order Now</a>
+        <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
       </div>
       <div class="card">
-        <img src="coffee.webp" alt="Cold Brew" loading="lazy">
+        <img src=images/coffee.webp alt="Cold Brew" loading="lazy">
         <h3>Cold Brew</h3>
         <p>$4.20</p>
         <a href="reservation.html" class="order-button">Order Now</a>
       </div>
       <div class="card">
-        <img src="blackcoffe.webp" alt="Mocha Shake" loading="lazy">
+        <img src=images/blackcoffe.webp alt="Mocha" loading="lazy">
         <h3>Mocha Shake</h3>
         <p>$4.80</p>
         <a href="reservation.html" class="order-button">Order Now</a>
@@ -138,6 +146,7 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="menu.html">Menu</a></li>
           <li><a href="about.html">About Us</a></li>
+         
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -148,7 +157,6 @@
       </div>
     </div>
   </footer>
-
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -159,5 +167,6 @@
       });
     }
   </script>
+   
 </body>
 </html>
