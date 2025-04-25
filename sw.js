@@ -21,16 +21,18 @@ const URLS_TO_CACHE = [
   '/images/esspresso.webp',
 ];
 
+// Install event - Cache static resources
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
-      console.log('[SW] Caching site files');
+      console.log('[SW] Caching static site files');
       return cache.addAll(URLS_TO_CACHE);
     })
   );
   self.skipWaiting(); // Activate immediately after install
 });
 
+// Activate event - Remove old caches that are no longer needed
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -47,11 +49,27 @@ self.addEventListener('activate', event => {
   self.clients.claim(); // Take control of open tabs
 });
 
+// Fetch event - Serve cached content first, then fallback to network if not cached
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      // Serve from cache, fallback to network
-      return cachedResponse || fetch(event.request);
+      // If cached response is found, return it
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      // Fetch from network if not in cache
+      return fetch(event.request).then(fetchedResponse => {
+        // Only cache successful responses from the network
+        if (!fetchedResponse || fetchedResponse.status !== 200 || fetchedResponse.type !== 'basic') {
+          return fetchedResponse;
+        }
+
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, fetchedResponse.clone()); // Cache the network response
+          return fetchedResponse; // Return the network response
+        });
+      });
     })
   );
 });
