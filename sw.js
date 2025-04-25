@@ -1,63 +1,57 @@
-const CACHE_NAME = "brew-haven-v1";
-const urlsToCache = [
-  "index.html",
-  "about.html",
-  "menu.html",
-  "blog.html",
-  "contact.html",
-  "faq.html",
-  "reservation.html",
-  "event.html",
-  "careers.html",
-  "reviews.html",
-  "offline.html",
-  "style.css",
-  "beans.webp",
-  "blackcoffe.webp",
-  "blueberry.webp",
-  "coffee.webp",
-  "coldcoffee.webp",
-  "esspresso.webp",
-  "interior.webp",
-  "latte art.webp",
-  "latte.webp",
-  "mocha.webp",
-  "outside.webp"
+const CACHE_NAME = 'brew-haven-v1';
+const URLS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/menu.html',
+  '/about.html',
+  '/blog.html',
+  '/careers.html',
+  '/contact.html',
+  '/event.html',
+  '/faq.html',
+  '/reservation.html',
+  '/style.css',
+  '/images/hero-bg.jpg',
+  '/images/latte.webp',
+  '/images/mocha.webp',
+  '/images/coffee.webp',
+  '/images/blackcoffe.webp',
+  '/images/blueberry.webp',
+  '/images/interior.webp',
+  '/images/esspresso.webp',
 ];
 
-// Install Service Worker & cache files
-self.addEventListener("install", (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    }).catch((err) => {
-      console.error("Caching failed:", err);
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('[SW] Caching site files');
+      return cache.addAll(URLS_TO_CACHE);
     })
   );
+  self.skipWaiting(); // Activate immediately after install
 });
 
-// Activate the Service Worker and remove old caches
-self.addEventListener("activate", (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cache) => {
-          if (cache !== CACHE_NAME) {
-            return caches.delete(cache);
+    caches.keys().then(keys =>
+      Promise.all(
+        keys.map(key => {
+          if (key !== CACHE_NAME) {
+            console.log('[SW] Removing old cache:', key);
+            return caches.delete(key);
           }
         })
-      );
-    })
+      )
+    )
   );
+  self.clients.claim(); // Take control of open tabs
 });
 
-// Fetch and serve from cache, fallback to offline
-self.addEventListener("fetch", (event) => {
+self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request).catch(() => {
-        return caches.match("offline.html");
-      });
+    caches.match(event.request).then(cachedResponse => {
+      // Serve from cache, fallback to network
+      return cachedResponse || fetch(event.request);
     })
   );
 });
