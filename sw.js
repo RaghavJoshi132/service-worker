@@ -50,8 +50,14 @@ self.addEventListener('activate', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
-      // Serve from cache, fallback to network
-      return cachedResponse || fetch(event.request);
+      // Serve from cache, fallback to network if not cached
+      return cachedResponse || fetch(event.request).then(fetchedResponse => {
+        // Cache the fetched response for future use
+        return caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, fetchedResponse.clone());
+          return fetchedResponse;
+        });
+      });
     })
   );
 });
