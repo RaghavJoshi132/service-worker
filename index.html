@@ -154,18 +154,19 @@
 
   <!-- Registering Service Worker -->
   <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker
-          .register('/sw.js')  // Ensure your service worker file is named "sw.js" and placed in the root directory
-          .then(registration => {
-            console.log("Service Worker registered successfully:", registration);
-          })
-          .catch(err => {
-            console.error("Service Worker registration failed:", err);
-          });
+   if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then(registration => {
+        console.log('Service Worker registered successfully:', registration);
+      })
+      .catch(error => {
+        console.error('Service Worker registration failed:', error);
       });
-    }
+  });
+}
+
   </script>
 
 </body>
