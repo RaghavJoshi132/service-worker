@@ -6,12 +6,10 @@
   <title>Brew Haven - Home</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-    
       color: white;
     }
 
@@ -56,9 +54,7 @@
     .menu-cards .card .order-button {
       margin-top: 10px;
       display: inline-block;
-      
     }
-    
   </style>
 </head>
 <body>
@@ -70,7 +66,6 @@
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
         <li><a href="about.html">About Us</a></li>
-        
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="faq.html">FAQ</a></li>
@@ -98,7 +93,7 @@
       <a href="about.html" class="read-more">Read More About Us</a>
     </div>
     <div class="about-img">
-      <img src= images/interior.webp alt="Cafe Interior" loading="lazy" >
+      <img src="images/interior.webp" alt="Cafe Interior" loading="lazy">
     </div>
   </section>
 
@@ -106,25 +101,25 @@
     <h2>Popular Picks</h2>
     <div class="menu-cards">
       <div class="card">
-        <img src= images/latte.webp alt="Latte" loading="lazy">
+        <img src="images/latte.webp" alt="Latte" loading="lazy">
         <h3>Caramel Latte</h3>
         <p>$4.50</p>
         <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
       </div>
       <div class="card">
-        <img src=images/mocha.webp alt="Matcha" loading="lazy">
+        <img src="images/mocha.webp" alt="Matcha" loading="lazy">
         <h3>Matcha Tea</h3>
         <p>$4.00</p>
         <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
       </div>
       <div class="card">
-        <img src=images/coffee.webp alt="Cold Brew" loading="lazy">
+        <img src="images/coffee.webp" alt="Cold Brew" loading="lazy">
         <h3>Cold Brew</h3>
         <p>$4.20</p>
         <a href="reservation.html" class="order-button">Order Now</a>
       </div>
       <div class="card">
-        <img src=images/blackcoffe.webp alt="Mocha" loading="lazy">
+        <img src="images/blackcoffe.webp" alt="Mocha" loading="lazy">
         <h3>Mocha Shake</h3>
         <p>$4.80</p>
         <a href="reservation.html" class="order-button">Order Now</a>
@@ -146,7 +141,6 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="menu.html">Menu</a></li>
           <li><a href="about.html">About Us</a></li>
-         
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -157,16 +151,22 @@
       </div>
     </div>
   </footer>
+
+  <!-- Registering Service Worker -->
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker
-          .register('/sw.js')
-          .then((reg) => console.log("Service Worker registered successfully:", reg))
-          .catch((err) => console.error("Service Worker registration failed:", err));
+          .register('/sw.js')  // Ensure your service worker file is named "sw.js" and placed in the root directory
+          .then(registration => {
+            console.log("Service Worker registered successfully:", registration);
+          })
+          .catch(err => {
+            console.error("Service Worker registration failed:", err);
+          });
       });
     }
   </script>
-   
+
 </body>
 </html>
