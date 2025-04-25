@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brew Haven - Home</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    
+      color: white;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      display: inline;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .nav-links a.active {
+      font-weight: bold;
+      border-bottom: 2px solid #fff;
+    }
+
+    .order-button {
+      background-color: #908982;
+      padding: 8px 16px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .menu-cards .card {
+      border: 1px solid #090606;
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .menu-cards .card .order-button {
+      margin-top: 10px;
+      display: inline-block;
+      
+    }
+    
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Brew Haven</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About Us</a></li>
+        
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="reservation.html">Order</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="careers.html">Careers</a></li>
+      </ul>
+      <a href="reservation.html" class="order-button">Order Now</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Brew Haven</h1>
+      <p>Crafted Coffee. Cozy Vibes.</p>
+      <a href="menu.html" class="cta-button">Explore Menu</a>
+    </div>
+  </section>
+
+  <section class="about-preview">
+    <div class="about-text">
+      <h2>Who We Are</h2>
+      <p>We’re a cozy café offering handcrafted coffee, warm ambiance, and locally-sourced snacks that make your day better.</p>
+      <a href="about.html" class="read-more">Read More About Us</a>
+    </div>
+    <div class="about-img">
+      <img src= images/interior.webp alt="Cafe Interior" loading="lazy" >
+    </div>
+  </section>
+
+  <section class="popular-picks">
+    <h2>Popular Picks</h2>
+    <div class="menu-cards">
+      <div class="card">
+        <img src= images/latte.webp alt="Latte" loading="lazy">
+        <h3>Caramel Latte</h3>
+        <p>$4.50</p>
+        <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
+      </div>
+      <div class="card">
+        <img src=images/mocha.webp alt="Matcha" loading="lazy">
+        <h3>Matcha Tea</h3>
+        <p>$4.00</p>
+        <a href="reservation.html" class="order-button" loading="lazy">Order Now</a>
+      </div>
+      <div class="card">
+        <img src=images/coffee.webp alt="Cold Brew" loading="lazy">
+        <h3>Cold Brew</h3>
+        <p>$4.20</p>
+        <a href="reservation.html" class="order-button">Order Now</a>
+      </div>
+      <div class="card">
+        <img src=images/blackcoffe.webp alt="Mocha" loading="lazy">
+        <h3>Mocha Shake</h3>
+        <p>$4.80</p>
+        <a href="reservation.html" class="order-button">Order Now</a>
+      </div>
+    </div>
+    <a href="menu.html" class="view-full-menu">View Full Menu</a>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h4>Contact</h4>
+        <p>123 Brew Street<br>Cityville, CoffeeLand</p>
+        <p>Phone: (123) 456-7890</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="about.html">About Us</a></li>
+         
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Us</h4>
+        <p>Instagram | Facebook | Twitter</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then((reg) => console.log("Service Worker registered successfully:", reg))
+          .catch((err) => console.error("Service Worker registration failed:", err));
+      });
+    }
+  </script>
+   
+</body>
+</html>
